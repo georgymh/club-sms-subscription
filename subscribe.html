@@ -2,23 +2,11 @@
 <head>
 	<title> Subscribe to the club </title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel='stylesheet' />
-
-	<style>
-
-		.pad-top-lg {
-			padding-top: 100px;
-		}
-
-		.pad-top {
-			margin-top: 40px;
-		}
-
-	</style>
-
+	<link href="resources/subscribe.css" rel='stylesheet' />
 <body>
-	<div class="content">
+	<div class="content pad-top-lg">
 
-		<h2 class="text-center pad-top-lg"> Receive text messages 15 minutes before the club meeting </h2>
+		<h2 class="text-center"> Receive text messages 15 minutes before the club meeting </h2>
 
 		<div class="row pad-top">
 			<div class="jumbotron col-md-offset-3 col-md-6">
@@ -26,7 +14,7 @@
 
 				  <div class="form-group">
 				    <label class="text-left">Email address</label>
-				    <input type="email" class="form-control" id="email" placeholder="Your already registered email">
+				    <input type="email" class="form-control" id="email" placeholder="registered@email.com">
 				  </div>
 
 				  <div class="form-group">
@@ -40,8 +28,8 @@
 				    </label>
 				  </div>
 
-				  <div class="text-center">
-				  	<button type="submit" class="pad-top btn btn-lg btn-success">Subscribe</button>
+				  <div class="text-center pad-top">
+				  	<button type="submit" class="btn btn-lg btn-success">Subscribe</button>
 				  </div>
 
 				</form>
@@ -52,13 +40,6 @@
 
 <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
-
-<script>
-	$(document).ready(function() {
-		$('form').submit(function() {
-			alert('Clicked subscribe!');
-		});
-	});
-</script>
+<script src='resources/subscribe.js'></script>
 
 </html>
