@@ -1,0 +1,64 @@
+<html>
+<head>
+	<title> Subscribe to the club </title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel='stylesheet' />
+
+	<style>
+
+		.pad-top-lg {
+			padding-top: 100px;
+		}
+
+		.pad-top {
+			margin-top: 40px;
+		}
+
+	</style>
+
+<body>
+	<div class="content">
+
+		<h2 class="text-center pad-top-lg"> Receive text messages 15 minutes before the club meeting </h2>
+
+		<div class="row pad-top">
+			<div class="jumbotron col-md-offset-3 col-md-6">
+				<form>
+
+				  <div class="form-group">
+				    <label class="text-left">Email address</label>
+				    <input type="email" class="form-control" id="email" placeholder="Your already registered email">
+				  </div>
+
+				  <div class="form-group">
+				    <label class="text-left">Phone Number</label>
+				    <input type="password" class="form-control" id="phone" placeholder="(123) 456-7890">
+				  </div>
+
+				  <div class="checkbox">
+				    <label class="text-left">
+				      <input type="checkbox"> I agree to receive text messages from the OCC Programming Club.
+				    </label>
+				  </div>
+
+				  <div class="text-center">
+				  	<button type="submit" class="pad-top btn btn-lg btn-success">Subscribe</button>
+				  </div>
+
+				</form>
+			</div> 
+		</div>
+	</div>
+</body>
+
+<script src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+<script>
+	$(document).ready(function() {
+		$('form').submit(function() {
+			alert('Clicked subscribe!');
+		});
+	});
+</script>
+
+</html>
