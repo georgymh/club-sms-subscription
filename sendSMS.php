@@ -13,17 +13,21 @@ function sendSMS($listOfPhones){
  		{
 	 		//use helper library to send message
 			// $client->account->messages->create(array(
-			// 	'To' => $phone,
-			// 	'From' => "+14243226078",
-			// 	'Body' => createMessage($name),
+			 	//'To' => + . $phone,
+			 	//'From' => "+14243226078",
+			 	//'Body' => createMessage($name),
 			//));
-			echo "TESTING: sending message: " . createMessage($name) . " to " . $phone;
+
+
+			echo "TESTING: sending message: " . createMessage($name) . " to " . "+" . $phone;
 		}
 		else {
 			echo "TESTING: Phone number invalid";
 		}
 	}
 }
+
+
 
 function checkIfValidPhone($phone)
 {
@@ -35,6 +39,9 @@ function createMessage($name)
 	return $name . ", this is a reminder that pogramming club begins in 15 minutes.";
 }
 
+
+
+//test array and function call
 $listOfPeople = array(
 	'Bryan' => '17146558300'
 	);
