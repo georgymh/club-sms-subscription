@@ -2,15 +2,28 @@
 <head>
 	<title> Subscribe to the club </title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel='stylesheet' />
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href="resources/subscribe.css" rel='stylesheet' />
 <body>
 	<div class="content pad-top-lg">
 
-		<h2 class="text-center"> Receive text messages 15 minutes before the club meeting </h2>
+		<h2 class="text-center"> Receive a SMS reminder 1 hour before the club meeting starts </h2>
 
-		<div class="row pad-top">
-			<div class="jumbotron col-md-offset-3 col-md-6">
+		<div class="row pad-top-md">
+		  <div class="col-md-offset-3 col-md-6">
+			<div id="alert-box" class="alert alert-danger" role="alert" style="display:none"></div>
+			<div id="success-box" class="alert alert-success" role="alert" style="display:none"></div>
+		  </div>
+		</div>
+
+		<div id="form-container" class="row pad-top-xsm">
+			<div class="col-md-offset-3 col-md-6">
 				<form>
+
+				  <div class="form-group">
+				    <label class="text-left">First Name</label>
+				    <input class="form-control" id="name" placeholder="Mario (Mama-mia!)">
+				  </div>
 
 				  <div class="form-group">
 				    <label class="text-left">Email address</label>
@@ -19,17 +32,20 @@
 
 				  <div class="form-group">
 				    <label class="text-left">Phone Number</label>
-				    <input type="password" class="form-control" id="phone" placeholder="(123) 456-7890">
+				    <input class="form-control" id="phone" placeholder="(123) 456-7890">
 				  </div>
 
 				  <div class="checkbox">
 				    <label class="text-left">
-				      <input type="checkbox"> I agree to receive text messages from the OCC Programming Club.
+				      <input id="confirm" type="checkbox"> I confirm that the phone provided is mine, <b>and</b> I allow the OCC Programming Club to send me text messages on the days and times specified.
 				    </label>
 				  </div>
 
 				  <div class="text-center pad-top">
-				  	<button type="submit" class="btn btn-lg btn-success">Subscribe</button>
+				  	<button id="subscribe" type="submit" class="btn btn-lg btn-success">
+				  		Subscribe
+				  		<i id="spinner" class="fa fa-circle-o-notch fa-spin" style="display:none"></i>
+				  	</button>
 				  </div>
 
 				</form>
