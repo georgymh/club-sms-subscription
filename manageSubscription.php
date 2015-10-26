@@ -16,7 +16,10 @@ if ( isset($_POST['action']) && !empty($_POST['action']) ) {
 		exit();
 
 	} else {
-		$actionType = $_POST['action'];
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$phone = "1" . $_POST['phone'];
+		$action = $_POST['action'];
 	}
 
 } else {
@@ -53,13 +56,14 @@ $sms_listFeed = $sms_worksheet->getListFeed();
 if ($action == 'activate') {
 	// ACTIVATE SMS SUBSCRIPTION.
 	if ( checkMemberStatus($member_listFeed, $email) ) {
-		// Add them to the SMS list.
+		// Activate the member's SMS Subscription.
 		addPhoneToEntry($sms_listFeed, $name, $email, $phone);
+	
 		echo 'activated';
 	} else {
 		echo 'not a member';
 	}
-} else {
+} elseif ($action == 'deactivate') {
 	// DEACTIVATE SMS SUBSCRIPTION.
 	deactivateSMS($sms_listFeed, $email, $phone);
 	echo 'deactivated';
