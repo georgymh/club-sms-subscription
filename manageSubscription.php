@@ -87,23 +87,11 @@ function checkMemberStatus($listFeed, $email) {
 
 function addPhoneToEntry($listFeed, $name, $email, $phone) {
 	// To prevent duplicates, check if user already had subscribed.
-	$userExisted = false;
-	$entryToEdit = null;
-	foreach ($listFeed->getEntries() as $entry) {
-	    $values = $entry->getValues();
-
-	    if ($values["email"] == $email) {
-	    	$entryToEdit = $entry;
-
-	    	if (! $values["activated"]) {
-	    		$userExisted = true;
-	    		break;
-	    	}
-	    }
-	}
+	// NOTE: A duplicate currently means same email AND same phone.
+	$entryToEdit = findMemberSubscription($listFeed, $email, $phone);
 
 	// Subscribe the user.
-	if ($userExisted) {
+	if ($entryToEdit) {
 		// Activate the SMS Service, and that's it.
 	    $values = $entryToEdit->getValues();
 	    $values["activated"] = '1';
@@ -125,6 +113,17 @@ function addPhoneToEntry($listFeed, $name, $email, $phone) {
 
 function deactivateSMS($listFeed, $email, $phone) {
 	// To prevent duplicates, check if user already had subscribed.
+	$entryToEdit = findMemberSubscription($listFeed, $email, $phone);
+
+	if ($entryToEdit) {
+		// Deactivate the SMS Service.
+	    $values = $entryToEdit->getValues();
+	    $values["activated"] = '0';
+	    $entryToEdit->update($values);
+	}
+}
+
+function findMemberSubscription($listFeed, $email, $phone) {
 	$entryToEdit = null;
 	foreach ($listFeed->getEntries() as $entry) {
 	    $values = $entry->getValues();
@@ -135,12 +134,7 @@ function deactivateSMS($listFeed, $email, $phone) {
 	    }
 	}
 
-	if ($entryToEdit) {
-		// Deactivate the SMS Service.
-	    $values = $entryToEdit->getValues();
-	    $values["activated"] = '0';
-	    $entryToEdit->update($values);
-	}
+	return $entryToEdit; // can be null.
 }
 
 ?>
