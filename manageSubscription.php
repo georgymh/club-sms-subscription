@@ -1,6 +1,7 @@
 <?php
 
 require 'vendor/autoload.php';
+require 'GoogleAutoToken.php';
 
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
@@ -41,7 +42,8 @@ if ( v::phone()->validate($phone) ) {
 *	SET UP
 */
 
-$accessToken = "ACCESS_TOKEN_HERE";
+$accessToken = GoogleAutoToken::getAccessToken();
+
 $serviceRequest = new DefaultServiceRequest($accessToken);
 ServiceRequestFactory::setInstance($serviceRequest);
 $spreadsheetService = new Google\Spreadsheet\SpreadsheetService();
