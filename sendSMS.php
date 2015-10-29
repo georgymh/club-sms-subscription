@@ -14,17 +14,11 @@ function sendSMS($listOfPhones){
  		if (checkIfValidPhone($phone))
  		{
 	 		//use helper library to send message
-			// $client->account->messages->create(array(
-			 	//"To" => '+' . $phone,
-			 	//"From" => "+14243226078",
-			 	//"Body" => createMessage($name),
-			//));
-
-
-			echo "TESTING: sending message: " . createMessage($name) . " to " . "+" . $phone . " ";
-		}
-		else {
-			echo "TESTING: Phone number invalid";
+			$client->account->messages->create(array(
+			 	"To" => '+' . $phone,
+			 	"From" => "+14243226078",
+			 	"Body" => createMessage($name),
+			));
 		}
 	}
 }
@@ -40,22 +34,4 @@ function createMessage($name)
 {
 	return $name . ", this is a reminder that pogramming club begins in 15 minutes.";
 }
-
-
-
-//test array and function call
-$clubMemberList = array(
-    array(
-        "name" => 'Georgy',
-        "phone" => '17140000000',
-        "extraInfoInTheFuture" => 'bla bla'
-    ),
-    array(
-        "name" => "Bryan",
-        "phone" => "17140000001",
-        "extraInfoInTheFuture" => "bla bla"
-    )
-);
-
-sendSMS($clubMemberList);
 ?>
