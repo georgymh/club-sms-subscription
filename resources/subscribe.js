@@ -1,9 +1,10 @@
 $(document).ready(function() {
 
+$('#phone').mask('(000) 000-0000');
+
 $('input#confirm').on('click', function() {
 	$('.checkbox').css('color', 'black');
 });
-
 
 $('form').submit(function(e) {
 	e.preventDefault();
