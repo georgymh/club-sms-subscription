@@ -5,7 +5,6 @@ require 'vendor/autoload.php';
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
 
-
 if ( isset($_POST['action']) && !empty($_POST['action']) ) {
 
 	if ( !isset($_POST['name']) || empty($_POST['name']) ||
@@ -18,12 +17,23 @@ if ( isset($_POST['action']) && !empty($_POST['action']) ) {
 	} else {
 		$name = $_POST['name'];
 		$email = $_POST['email'];
-		$phone = "1" . $_POST['phone'];
+		$phone = $_POST['phone'];
 		$action = $_POST['action'];
 	}
 
 } else {
 	echo "error_headers";
+	exit();
+}
+
+// Validate and Clean Phone.
+use Respect\Validation\Validator as v;
+if ( v::phone()->validate($phone) ) {
+	$phone = str_replace(' ', '', $phone);
+	$phone = preg_replace('/[^\p{L}\p{N}\s]/u', '', $phone);
+	$phone = "1" . $phone;
+} else {
+	echo "error_phone";
 	exit();
 }
 
