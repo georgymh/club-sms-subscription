@@ -1,19 +1,21 @@
 <?php
-require_once('/home/occprogr/public_html/vendors/twilio-php-master/Services/Twilio.php'); // Loads twilio helper library
+require_once('.../twilio-php-master/Services/Twilio.php'); // Loads twilio helper library
 
 function sendSMS($listOfPhones){
  	//set API token vars
-	$account_sid = 'ACc7ac0e71cf8da9cf5a53ad9af9866e96';
-	//$auth_token = 'c6c816f5c5203e618205cbb0f25d5435';
+	$account_sid = 'ACCOUNT SID HERE';
+	//$auth_token = 'AUTH TOKEN HERE';
 	$client = new Services_Twilio($account_sid, $auth_token);
 
- 	foreach ($listOfPhones as $name => $phone)
+ 	foreach ($listOfPhones as $member)
  	{
+		$name = $member["name"];
+		$phone = $member["phone"];
  		if (checkIfValidPhone($phone))
  		{
 	 		//use helper library to send message
 			// $client->account->messages->create(array(
-			 	//'To' => + . $phone,
+			 	//'To' => '+' . $phone,
 			 	//'From' => "+14243226078",
 			 	//'Body' => createMessage($name),
 			//));
@@ -42,9 +44,19 @@ function createMessage($name)
 
 
 //test array and function call
-$listOfPeople = array(
-	'Bryan' => '17146558300'
-	);
+$clubMemberList = array(
+    array(
+        'name' => 'Georgy',
+        'phone' => '7140000000',
+        'extraInfoInTheFuture' => 'bla bla'
+    ),
+    array(
+        'name' => 'Bryan',
+        'phone' => '7140000001',
+        'extraInfoInTheFuture' => 'bla bla'
+    )
+	)
+);
 
 sendSMS($listOfPeople);
 ?>
