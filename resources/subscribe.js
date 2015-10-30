@@ -45,6 +45,8 @@ $('form').submit(function(e) {
 					showErrorAlert('<b>We\'re sorry, but it seems that you\'re not a registered member.</b> You will need to first become one by completing <a href="https://docs.google.com/forms/d/1iQRCE1v-SPrRKDrL1E5oRHxQvKUm1gH-tdyB-19QXNU/viewform?c=0&w=1">this form</a>.');
 				} else if (response == 'error_headers') {
 					showErrorAlert('<b>An error occurred.</b> Please verify that you are filling all the boxes and try again.');
+				} else if (response == 'error_phone') {
+					showErrorAlert('<b>Please verify your phone.</b>');
 				} else {
 					showErrorAlert('<b>We\'re sorry, an error occurred while subscribing you.</b> Please refresh and try again. If the problem persists, please <a href="mailto:occprogrammingclub@gmail.com">contact us</a>.');
 				}

@@ -1,10 +1,10 @@
 <?php
 
 require 'vendor/autoload.php';
+require 'GoogleAutoToken.php';
 
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
-
 
 if ( isset($_POST['action']) && !empty($_POST['action']) ) {
 
@@ -18,7 +18,7 @@ if ( isset($_POST['action']) && !empty($_POST['action']) ) {
 	} else {
 		$name = $_POST['name'];
 		$email = $_POST['email'];
-		$phone = "1" . $_POST['phone'];
+		$phone = $_POST['phone'];
 		$action = $_POST['action'];
 	}
 
@@ -27,11 +27,23 @@ if ( isset($_POST['action']) && !empty($_POST['action']) ) {
 	exit();
 }
 
+// Validate and Clean Phone.
+use Respect\Validation\Validator as v;
+if ( v::phone()->validate($phone) ) {
+	$phone = str_replace(' ', '', $phone);
+	$phone = preg_replace('/[^\p{L}\p{N}\s]/u', '', $phone);
+	$phone = "+1" . $phone;
+} else {
+	echo "error_phone";
+	exit();
+}
+
 /**
 *	SET UP
 */
 
-$accessToken = "ACCESS_TOKEN_HERE";
+$accessToken = GoogleAutoToken::getAccessToken();
+
 $serviceRequest = new DefaultServiceRequest($accessToken);
 ServiceRequestFactory::setInstance($serviceRequest);
 $spreadsheetService = new Google\Spreadsheet\SpreadsheetService();

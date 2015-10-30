@@ -1,17 +1,13 @@
 <?php
 
 require 'vendor/autoload.php';
+require 'GoogleAutoToken.php';
 
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
 
-if (isset($_GET['code']) && $_GET['code']) {
-	$accessToken = $_GET['code'];
-} else {
-	exit;
-}
-
 // Set up.
+$accessToken = GoogleAutoToken::getAccessToken();
 $serviceRequest = new DefaultServiceRequest($accessToken);
 ServiceRequestFactory::setInstance($serviceRequest);
 $spreadsheetService = new Google\Spreadsheet\SpreadsheetService();
@@ -37,7 +33,7 @@ foreach ($sms_listFeed->getEntries() as $entry) {
    
 }
 
-var_dump( $subscribersList );
+// var_dump( $subscribersList );
 
 // $subscribersList now containes all subscribers.
 // could prevent duplicate phones here.
