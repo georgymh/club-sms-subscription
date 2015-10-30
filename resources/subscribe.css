@@ -9,3 +9,31 @@
 .pad-top {
 	padding-top: 40px;
 }
+
+.pad-top-md {
+	padding-top: 30px;
+}
+
+.pad-top-sm {
+	padding-top: 20px;
+}
+
+.pad-top-xsm {
+	padding-top: 10px;
+}
+
+.content {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+#spinner {
+	margin-left: 5px;
+}
+
+#subscribe[disabled] {
+	cursor: pointer;
+	cursor: pointer;
+    background-color: #888888;
+    border-color: #777777;
+}

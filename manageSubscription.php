@@ -1,10 +1,10 @@
 <?php
 
 require 'vendor/autoload.php';
+require 'GoogleAutoToken.php';
 
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
-
 
 if ( isset($_POST['action']) && !empty($_POST['action']) ) {
 
@@ -16,7 +16,10 @@ if ( isset($_POST['action']) && !empty($_POST['action']) ) {
 		exit();
 
 	} else {
-		$actionType = $_POST['action'];
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$phone = $_POST['phone'];
+		$action = $_POST['action'];
 	}
 
 } else {
@@ -24,11 +27,23 @@ if ( isset($_POST['action']) && !empty($_POST['action']) ) {
 	exit();
 }
 
+// Validate and Clean Phone.
+use Respect\Validation\Validator as v;
+if ( v::phone()->validate($phone) ) {
+	$phone = str_replace(' ', '', $phone);
+	$phone = preg_replace('/[^\p{L}\p{N}\s]/u', '', $phone);
+	$phone = "+1" . $phone;
+} else {
+	echo "error_phone";
+	exit();
+}
+
 /**
 *	SET UP
 */
 
-$accessToken = "ACCESS_TOKEN_HERE";
+$accessToken = GoogleAutoToken::getAccessToken();
+
 $serviceRequest = new DefaultServiceRequest($accessToken);
 ServiceRequestFactory::setInstance($serviceRequest);
 $spreadsheetService = new Google\Spreadsheet\SpreadsheetService();
@@ -53,13 +68,14 @@ $sms_listFeed = $sms_worksheet->getListFeed();
 if ($action == 'activate') {
 	// ACTIVATE SMS SUBSCRIPTION.
 	if ( checkMemberStatus($member_listFeed, $email) ) {
-		// Add them to the SMS list.
+		// Activate the member's SMS Subscription.
 		addPhoneToEntry($sms_listFeed, $name, $email, $phone);
+	
 		echo 'activated';
 	} else {
 		echo 'not a member';
 	}
-} else {
+} elseif ($action == 'deactivate') {
 	// DEACTIVATE SMS SUBSCRIPTION.
 	deactivateSMS($sms_listFeed, $email, $phone);
 	echo 'deactivated';
@@ -83,23 +99,11 @@ function checkMemberStatus($listFeed, $email) {
 
 function addPhoneToEntry($listFeed, $name, $email, $phone) {
 	// To prevent duplicates, check if user already had subscribed.
-	$userExisted = false;
-	$entryToEdit = null;
-	foreach ($listFeed->getEntries() as $entry) {
-	    $values = $entry->getValues();
-
-	    if ($values["email"] == $email) {
-	    	$entryToEdit = $entry;
-
-	    	if (! $values["activated"]) {
-	    		$userExisted = true;
-	    		break;
-	    	}
-	    }
-	}
+	// NOTE: A duplicate currently means same email AND same phone.
+	$entryToEdit = findMemberSubscription($listFeed, $email, $phone);
 
 	// Subscribe the user.
-	if ($userExisted) {
+	if ($entryToEdit) {
 		// Activate the SMS Service, and that's it.
 	    $values = $entryToEdit->getValues();
 	    $values["activated"] = '1';
@@ -121,6 +125,17 @@ function addPhoneToEntry($listFeed, $name, $email, $phone) {
 
 function deactivateSMS($listFeed, $email, $phone) {
 	// To prevent duplicates, check if user already had subscribed.
+	$entryToEdit = findMemberSubscription($listFeed, $email, $phone);
+
+	if ($entryToEdit) {
+		// Deactivate the SMS Service.
+	    $values = $entryToEdit->getValues();
+	    $values["activated"] = '0';
+	    $entryToEdit->update($values);
+	}
+}
+
+function findMemberSubscription($listFeed, $email, $phone) {
 	$entryToEdit = null;
 	foreach ($listFeed->getEntries() as $entry) {
 	    $values = $entry->getValues();
@@ -131,12 +146,7 @@ function deactivateSMS($listFeed, $email, $phone) {
 	    }
 	}
 
-	if ($entryToEdit) {
-		// Deactivate the SMS Service.
-	    $values = $entryToEdit->getValues();
-	    $values["activated"] = '0';
-	    $entryToEdit->update($values);
-	}
+	return $entryToEdit; // can be null.
 }
 
 ?>
