@@ -15,7 +15,7 @@ function sendSMS($listOfPhones){
  		{
 	 		//use helper library to send message
 			$client->account->messages->create(array(
-			 	"To" => '+' . $phone,
+			 	"To" => "+" . $phone,
 			 	"From" => "+14243226078",
 			 	"Body" => createMessage($name),
 			));
