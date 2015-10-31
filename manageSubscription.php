@@ -32,7 +32,7 @@ use Respect\Validation\Validator as v;
 if ( v::phone()->validate($phone) ) {
 	$phone = str_replace(' ', '', $phone);
 	$phone = preg_replace('/[^\p{L}\p{N}\s]/u', '', $phone);
-	$phone = "+1" . $phone;
+	$phone = "1" . $phone;
 } else {
 	echo "error_phone";
 	exit();
