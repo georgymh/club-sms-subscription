@@ -28,7 +28,6 @@
   <ul>
     <li><a href="https://www.twilio.com">Twilio API - an SMS sending service</a></li>
     <li><a href="https://developers.google.com/drive/">Google Drive API - database storage</a></li>
-    <li><a href="https://sixserve.com">Sixserve web hosting - free web hosting!</a></li>
   </ul>
   
 <h2>Authors</h2>
