@@ -37,14 +37,19 @@
 
 				  <div class="checkbox">
 				    <label class="text-left">
-				      <input id="confirm" type="checkbox"> I confirm that the phone provided is mine, <b>and</b> I allow the OCC Programming Club to send me text messages on the days and times specified.
+				      <input id="confirm" type="checkbox"> I confirm that the phone and email address provided are mine, <b>and</b> I allow the OCC Programming Club to send me text messages on the days and times specified.
 				    </label>
 				  </div>
 
-				  <div class="text-center pad-top">
-				  	<button id="subscribe" type="submit" class="btn btn-lg btn-success">
+				  <div class="text-center pad-top-xsm">
+				  	<button id="unsubscribe" type="submit" class="btn btn-lg btn-danger" name="unsubscribe">
+				  		Opt out
+				  		<i id="spinner-unsubscribe" class="fa fa-circle-o-notch fa-spin" style="display:none"></i>
+				  	</button>
+
+				  	<button id="subscribe" type="submit" class="btn btn-lg btn-success" name="subscribe">
 				  		Subscribe
-				  		<i id="spinner" class="fa fa-circle-o-notch fa-spin" style="display:none"></i>
+				  		<i id="spinner-subscribe" class="fa fa-circle-o-notch fa-spin" style="display:none"></i>
 				  	</button>
 				  </div>
 
