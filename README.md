@@ -31,6 +31,6 @@
     <li><a href="https://sixserve.com">Sixserve web hosting - free web hosting!</a></li>
   </ul>
   
-<h4>Authors</h4>
+<h2>Authors</h2>
 Georgy Marrero <br>
 Bryan Fullam
