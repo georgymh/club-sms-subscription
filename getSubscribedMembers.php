@@ -33,9 +33,7 @@ foreach ($sms_listFeed->getEntries() as $entry) {
    
 }
 
-// var_dump( $subscribersList );
-
 // $subscribersList now containes all subscribers.
-// could prevent duplicate phones here.
+// Could prevent duplicate phones here.
 
 ?>

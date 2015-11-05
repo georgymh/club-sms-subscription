@@ -1,12 +1,15 @@
 <?php
-require_once('vendors/twilio-php-master/Services/Twilio.php'); // Loads twilio helper library
+
+// Load Twilio Library
+require_once('vendors/twilio-php-master/Services/Twilio.php'); 
 
 function sendSMS($listOfPhones){
- 	//set API token vars
-	$account_sid = "12345";
-	$auth_token = "12345";
+ 	// Set API token variables.
+	$account_sid = "TWILIO_ACCOUNT_SID_HERE";
+	$auth_token = "TWILIO_AUTH_TOKEN_HERE";
 	$client = new Services_Twilio($account_sid, $auth_token);
 
+	// Send SMS to each phone number.
  	foreach ($listOfPhones as $member)
  	{
 		$name = $member["name"];
@@ -23,8 +26,6 @@ function sendSMS($listOfPhones){
 	}
 }
 
-
-
 function checkIfValidPhone($phone)
 {
 	return (preg_match("/^[0-9]{11}$/", $phone));
@@ -32,6 +33,7 @@ function checkIfValidPhone($phone)
 
 function createMessage($name)
 {
-	return $name . ", this is a reminder that pogramming club begins in 15 minutes.";
+	return "Hey $name! This is a reminder that the OCC Programming Club meeting will start in 60 minutes.";
 }
+
 ?>
