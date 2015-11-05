@@ -1,3 +1,5 @@
+<h1>SMS Subscription Service</h1>
+
 This project consists of an SMS Subscription Service intended to be used by the OCC Programming Club (<a href="https://github.com/occprogramming">repo</a> | <a href="https://occprogramming.club">site</a>). Using this service, members of the club are able to subscribe to a recurring SMS notification that will notify them of our weekly meeting, 60 minutes before they starts.
   
 <h2> The Why</h2>
@@ -29,4 +31,5 @@ In order to prepare for an upcoming hackathon, our club decided to make use of m
 <h2>Authors</h2>
 
 <a href="https://github.com/georgymh/">Georgy Marrero</a>
+
 <a href="https://github.com/bfullam/">Bryan Fullam</a>
