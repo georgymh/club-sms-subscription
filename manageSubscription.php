@@ -77,8 +77,16 @@ if ($action == 'activate') {
 	}
 } elseif ($action == 'deactivate') {
 	// DEACTIVATE SMS SUBSCRIPTION.
-	deactivateSMS($sms_listFeed, $email, $phone);
-	echo 'deactivated';
+	if ( checkMemberStatus($member_listFeed, $email) ) {
+		// Deactivate the member's SMS Subscription.
+		if ( deactivateSMS($sms_listFeed, $email, $phone) ) {
+			echo 'deactivated';
+		} else {
+			echo 'not a subscriber';
+		}
+	} else {
+		echo 'not a member';
+	}
 }
 
 /**
@@ -132,6 +140,10 @@ function deactivateSMS($listFeed, $email, $phone) {
 	    $values = $entryToEdit->getValues();
 	    $values["activated"] = '0';
 	    $entryToEdit->update($values);
+
+	    return true;
+	} else {
+		return false;
 	}
 }
 
