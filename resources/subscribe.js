@@ -15,7 +15,7 @@ $('form').submit(function(e) {
 	}
 
 	$.ajax({
-		url: "addMember.php",
+		url: "manageSubscription.php",
 		method: "POST",
 		data: {
 			name: $('#name').val(),
