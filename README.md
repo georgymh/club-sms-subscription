@@ -2,7 +2,7 @@
 
 This project consists of an SMS Subscription Service intended to be used by the OCC Programming Club (<a href="https://github.com/occprogramming">repo</a> | <a href="https://occprogramming.club">site</a>). Using this service, members of the club are able to subscribe to a recurring SMS notification that will notify them of our weekly meetings, 60 minutes before they start.
   
-<h2> The Why</h2>
+<h2>The Why</h2>
 
 In order to prepare for upcoming hackathons, our club decided to make use of meeting time to learn how to successfully implement third-party APIs. With this goal in mind, we wanted to make something useful for both ourselves and future club members, so we decided to face the challenge of (chronically) late members by taking away their excuses to arrive late to the meetings.
   
@@ -17,11 +17,13 @@ In order to prepare for upcoming hackathons, our club decided to make use of mee
   </ul>
   
 <h2>How It Works</h2>
+
   Operated entirely by magic and fueled with the blood, sweat, and tears of late club members.
   
   Unconvinced? <i> We will soon write the exact inner workings of our system. Stay tuned.</i>
 
 <h2>Technologies Used</h2>
+
   <ul>
     <li><a href="https://www.twilio.com">Twilio API</a> - To send SMS</li>
     <li><a href="https://developers.google.com/drive/">Google Drive API</a> - To store the subscriber's information</li>
