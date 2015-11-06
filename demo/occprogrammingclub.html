@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Subscribe to weekly SMS reminders from the OCC Programming Club.">
+    <meta name="author" content="OCC Programming Club">
+    <link rel="icon" type="image/png" href="https://occprogramming.club/icon.png" />
+
+    <title>OCC Programming Club</title>
+
+    <!-- Bootstrap -->
+    <link href="https://occprogramming.club/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="https://occprogramming.club/css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="https://occprogramming.club/css/style.css" rel="stylesheet">
+    <link href="../resources/subscribe.css" rel='stylesheet' />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <nav>
+          <div class="navbar-header navbar-default">
+            <button type="button" class="navbar-toggle collapsed dark" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <h4 class="text-muted hidden-xs"><a href="index.html"><img id="logo" src="https://occprogramming.club/img/logo.png"/>OCC Programming Club</a></h4>
+            <h4 class="text-muted visible-xs"><a href="index.html"><img id="logo" src="https://occprogramming.club/img/logo.png"/></a></h4>
+          </div>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav nav-pills navbar-right hidden-xs">
+              <li role="presentation"><a href="index.html">Home</a></li>
+              <li role="presentation"><a href="resources.html">Resources</a></li>
+              <li role="presentation"><a href="leaderboard.html">Leaderboard</a></li>
+              <li role="presentation" class="active"><a href="subscribe.html"><b>Subscribe</b><span class="sr-only">(current)</span></a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked navbar-right hidden-sm hidden-md hidden-lg">
+              <li role="presentation"><a href="index.html">Home</a></li>
+              <li role="presentation"><a href="resources.html">Resources</a></li>
+              <li role="presentation"><a href="leaderboard.html">Leaderboard</a></li>
+              <li role="presentation" class="active"><a href="subscribe.html"><b>Subscribe</b><span class="sr-only">(current)</span></a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </nav>
+      </div>
+      <div class="jumbotron pad-top-md" style="margin-top: 30px">
+        <h2>Subscribe to weekly text reminders<sup><span style="font-size: 11px; margin-left: 5px" class="label label-info">NEW</span></sup></h2>
+        <br>
+        <p class="lead" style="font-size: 20px">Receive an SMS reminder 1 hour before the club meeting starts.</p>
+        <div class="row">
+          <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
+          <div id="alert-box" class="alert alert-danger" role="alert" style="display:none"></div>
+          <div id="success-box" class="alert alert-success" role="alert" style="display:none"></div>
+          </div>
+        </div>
+        <div id="form-container" class="row pad-top-xsm text-left">
+          <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
+            <form>
+              <div class="form-group">
+                <label class="text-left">First Name</label>
+                <input class="form-control" id="name" placeholder="Mario (Mama-mia!)">
+              </div>
+              <div class="form-group">
+                <label class="text-left">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="registered@email.com">
+              </div>
+              <div class="form-group">
+                <label class="text-left">Phone Number</label>
+                <input class="form-control" id="phone" placeholder="(123) 456-7890">
+              </div>
+              <div class="checkbox">
+                <label class="text-left">
+                  <input id="confirm" type="checkbox"> I confirm that the phone and email address provided are mine, <b>and</b> I allow the OCC Programming Club to send me text messages on the days and times specified.
+                </label>
+              </div>
+              <div class="text-center pad-top-sm">
+                <button id="unsubscribe" type="submit" class="btn btn-xs btn-danger" name="unsubscribe">
+                  Opt out
+                  <i id="spinner-unsubscribe" class="fa fa-circle-o-notch fa-spin" style="display:none"></i>
+                </button>
+                <button id="subscribe" type="submit" class="btn btn-xs btn-success" name="subscribe">
+                  Subscribe
+                  <i id="spinner-subscribe" class="fa fa-circle-o-notch fa-spin" style="display:none"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> <!-- jumbotron end -->
+
+      <br>
+
+      <footer class="footer">
+        <p>&copy; OCC Programming Club 2015</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://occprogramming.club/js/bootstrap.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://occprogramming.club/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Other Scripts -->
+    <script src='../resources/mask.js'></script>
+    <script src='../resources/subscribe.js'></script>
+
+  </body>
+
+</html>
