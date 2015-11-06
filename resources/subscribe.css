@@ -37,3 +37,11 @@
     background-color: #888888;
     border-color: #777777;
 }
+
+/* OCC Programming Club */
+
+.jumbotron .btn {
+	padding: 10px 18px;
+    font-size: 16px;
+}
+}
