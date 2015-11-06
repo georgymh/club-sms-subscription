@@ -6,8 +6,8 @@ session_start();
 
 class GoogleAutoToken {
 
-	/** 			    CONSTANTS 				   */
-	/***********************************************/
+	/** 			     CONSTANTS 				   */
+	/************************************************/
 
 	const AUTH_CONFIG_FILE = "client_secrets.json";
 
@@ -15,9 +15,10 @@ class GoogleAutoToken {
 
 	const SCOPES = array(
 		'https://spreadsheets.google.com/feeds'
-	);
+	); // NOTE: in some versions of PHP, const arrays
+	   // are not allowed in Classes.
 
-	/**********************************************/
+	/***********************************************/
 
 	public static function getAccessToken() {
 		// Get current token.
