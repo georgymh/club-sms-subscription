@@ -10,10 +10,10 @@
 
 // Get the subscribed members.
 // $subscribersList will contain an associative array with the members.
-require_once('getSubscribedMembers.php')
+require_once('getSubscribedMembers.php');
 
 // Send a customized SMS to the subscribed members.
-require_once('sendSMS.php')
+require_once('sendSMS.php');
 sendSMS($subscribersList);
 
 ?>
