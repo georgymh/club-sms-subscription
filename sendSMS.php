@@ -1,7 +1,7 @@
 <?php
 
 // Load Twilio Library
-require_once('vendors/twilio-php-master/Services/Twilio.php'); 
+require_once 'vendor/autoload.php';
 
 function sendSMS($listOfPhones){
  	// Set API token variables.
