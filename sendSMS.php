@@ -3,24 +3,23 @@
 // Load Twilio Library
 require_once 'vendor/autoload.php';
 
-function sendSMS($listOfPhones){
+function sendSMS($listOfPhones)
+{
  	// Set API token variables.
 	$account_sid = "TWILIO_ACCOUNT_SID_HERE";
 	$auth_token = "TWILIO_AUTH_TOKEN_HERE";
 	$client = new Services_Twilio($account_sid, $auth_token);
 
 	// Send SMS to each phone number.
- 	foreach ($listOfPhones as $member)
- 	{
+ 	foreach ($listOfPhones as $member) {
 		$name = $member["name"];
 		$phone = $member["phone"];
- 		if (checkIfValidPhone($phone))
- 		{
+ 		if (checkIfValidPhone($phone)) {
 	 		//use helper library to send message
 			$client->account->messages->create(array(
 			 	"To" => "+" . $phone,
 			 	"From" => "+14243226078",
-			 	"Body" => createMessage($name),
+			 	"Body" => createMessage($name)
 			));
 		}
 	}
