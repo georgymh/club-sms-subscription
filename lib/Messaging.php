@@ -26,7 +26,6 @@ class Messaging {
             $name = $member["name"];
             $phone = $member["phone"];
             if ($this->checkIfValidPhone($phone)) {
-                //use helper library to send message
                 $this->twilioClient->account->messages->create(array(
                     "To" => "+" . $phone,
                     "From" => $this->fromPhone,
