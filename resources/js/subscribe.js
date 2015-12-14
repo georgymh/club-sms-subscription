@@ -20,7 +20,7 @@ $('form').submit(function(e) {
         /* there is an activeElement at all */
         $btn.length &&
 
-        /* it's a child of the form */ 
+        /* it's a child of the form */
         $(this).has($btn) &&
 
         /* it's really a submit element */
@@ -43,14 +43,14 @@ $('form').submit(function(e) {
     }
 
 	$.ajax({
-		url: "manageSubscription.php",
+		url: "resources/php/manageSubscription.php",
 		method: "POST",
 		data: {
 			name: $('#name').val(),
 			email: $('#email').val(),
 			phone: $('#phone').val(),
 			action: action
-		},		
+		},
 		beforeSend: function() {
 			$('#spinner-' + sender_id).fadeIn();
 			$('#subscribe').prop('disabled', true);
@@ -64,7 +64,7 @@ $('form').submit(function(e) {
 				showSuccess(response);
 			} else {
 				// Error.
-			
+
 				// Manage the errors.
 				if (response == 'not a member') {
 					showErrorAlert('<b>We\'re sorry, but it seems that you\'re not a registered member.</b> You will need to first become one by completing <a href="https://docs.google.com/forms/d/1iQRCE1v-SPrRKDrL1E5oRHxQvKUm1gH-tdyB-19QXNU/viewform?c=0&w=1">this form</a>.');
