@@ -20,10 +20,16 @@ In order to prepare for upcoming hackathons, our club decided to make use of mee
   
 <h2>How It Works</h2>
 
-  Operated entirely by magic and fueled with the blood, sweat, and tears of late club members.
-  
-  Unconvinced? <i> We will soon write the exact inner workings of our system. Stay tuned.</i>
+  This program consists of four parts: **Subscription**, **Messaging**, **GoogleAutoToken**, and **SMS Deployer**.
 
+  - The **Subscription** part consists of a front-end and back-end. The front-end manages the different possible errors and communicates to a PHP script that uses the Subscription class, and the back-end consists of this Subscription class. The class is in charge of managing (adding from, deleting from) the spreadsheets of *subscribers*, and reading the spreadsheets of *club members*.
+  
+  - The **Messaging** part consists of the Messaging class, which is in charge of sending a custom text message to a list of subscribers.
+  
+  - The **GoogleAutoToken** class controls a series of files and allows the Subscription class to connect to the Google Spreadsheets and query it as a database. The purpose of the GoogleAutoToken class is to automatically manage the OAuth 2.0 connection between the server where this service is hosted and the Google Spreadsheets Service.
+  
+- The **SMS Deployer** file is the file that the cron job must call at a specified time and day. Its purpose is to get all activated subscribers using the Subscription class, create a list of these subscribers, and pass it to the Messaging class so it can send the text messages.
+  
 <h2>Technologies Used</h2>
 
   <ul>
