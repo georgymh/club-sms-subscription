@@ -1,6 +1,8 @@
 <h1>SMS Subscription Service</h1>
 
-This project consists of an SMS Subscription Service intended to be used by the OCC Programming Club (<a href="https://github.com/occprogramming">repo</a> | <a href="https://occprogramming.club">site</a>). Using this service, members of the club are able to subscribe to a recurring SMS notification that will notify them of our weekly meetings, 60 minutes before they start.
+This project was initially developed for the OCC Programming Club (<a href="https://github.com/occprogramming">repo</a> | <a href="http://occprogramming.club">site</a>), but can be easily ported for other organizations with the appropriate setup. Using **SMS Subscription Service**, members of the club are able to subscribe to a recurring SMS notification that will notify them of our weekly meetings, 60 minutes before the starting time.
+
+The functions of this service include: managing the subscription of a club member (adding them to the database, deleting them, making sure they are already a club member...) and sending a personalized text message to the subscribed and activated members from the database.
   
 <h2>The Why</h2>
 
